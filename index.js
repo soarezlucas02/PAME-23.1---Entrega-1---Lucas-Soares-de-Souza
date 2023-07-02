@@ -27,7 +27,7 @@ menuNaoLogado();
 
 
 
-
+//-------Classes------//
 
 class Cliente {
   constructor(id, nome, pets, fidelizado) {
@@ -76,3 +76,7 @@ class Sistema {
 
   // Implemente as funcionalidades exigidas pelo cliente aqui
 }
+
+
+
+//--------------------------------
