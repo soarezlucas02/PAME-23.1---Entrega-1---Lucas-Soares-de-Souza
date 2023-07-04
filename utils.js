@@ -24,19 +24,19 @@ export function gerarId() {
 }
 
 export function listarEmOrdemAlfabetica(array) {
-  // Ordena a array em ordem alfabética com base na propriedade 'nome'
+  
   const lista = array.sort((a, b) => {
     // Converte os nomes para maiúsculas para garantir a ordem correta
     const nomeA = a.nome.toUpperCase();
     const nomeB = b.nome.toUpperCase();
 
     if (nomeA < nomeB) {
-      return -1; // 'a' vem antes de 'b' no alfabeto
+      return -1;
     }
     if (nomeA > nomeB) {
-      return 1; // 'a' vem depois de 'b' no alfabeto
+      return 1;
     }
-    return 0; // 'a' e 'b' têm o mesmo nome
+    return 0;
   });
 
   lista.forEach((objeto) => {
@@ -45,19 +45,19 @@ export function listarEmOrdemAlfabetica(array) {
 }
 
 export function listarEmOrdemAlfabeticaPet(array) {
-  // Ordena a array em ordem alfabética com base na propriedade 'nome'
+
   const lista = array.sort((a, b) => {
     // Converte os nomes para maiúsculas para garantir a ordem correta
     const nomeA = a.nome.toUpperCase();
     const nomeB = b.nome.toUpperCase();
 
     if (nomeA < nomeB) {
-      return -1; // 'a' vem antes de 'b' no alfabeto
+      return -1; 
     }
     if (nomeA > nomeB) {
-      return 1; // 'a' vem depois de 'b' no alfabeto
+      return 1; 
     }
-    return 0; // 'a' e 'b' têm o mesmo nome
+    return 0;
   });
 
   lista.forEach((objeto) => {
@@ -72,12 +72,12 @@ export function listarEmOrdemCronologica(array) {
     const dataB = new Date(b.data);
 
     if (dataA < dataB) {
-      return -1; // 'a' vem antes de 'b' na ordem cronológica
+      return -1;
     }
     if (dataA > dataB) {
-      return 1; // 'a' vem depois de 'b' na ordem cronológica
+      return 1;
     }
-    return 0; // 'a' e 'b' têm a mesma data
+    return 0;
   });
 
   lista.forEach((objeto) => {

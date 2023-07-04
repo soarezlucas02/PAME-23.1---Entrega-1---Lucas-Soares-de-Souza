@@ -9,7 +9,7 @@ class Credenciais {
     }
   }
   
-  class Sistema {
+  class SistemaDeLogin {
     constructor() {
       this.usuarios = [
         new Credenciais('usuario1', 'senha1'),
@@ -35,9 +35,9 @@ class Credenciais {
     }
   }
 
-  const sistema = new Sistema();
+  const sistemaDeLogin = new SistemaDeLogin();
   
-  console.log(sistema.verificarCredenciais('usuario1', 'senha1')); // Credenciais válidas. Acesso permitido.
-  console.log(sistema.verificarCredenciais('usuario2', 'senha3')); // Senha incorreta
-  console.log(sistema.verificarCredenciais('usuario4', 'senha4')); // Usuário não encontrado
+  console.log(sistema.verificarCredenciais('usuario1', 'senha1'));
+  console.log(sistema.verificarCredenciais('usuario2', 'senha3')); 
+  console.log(sistema.verificarCredenciais('usuario4', 'senha4')); 
   
