@@ -26,7 +26,6 @@ export function gerarId() {
 export function listarEmOrdemAlfabetica(array) {
   
   const lista = array.sort((a, b) => {
-    // Converte os nomes para maiúsculas para garantir a ordem correta
     const nomeA = a.nome.toUpperCase();
     const nomeB = b.nome.toUpperCase();
 
@@ -40,14 +39,13 @@ export function listarEmOrdemAlfabetica(array) {
   });
 
   lista.forEach((objeto) => {
-    console.log(`Nome: ${objeto.nome} | ID: ${objeto.id}`);
+    console.log(objeto)
   });
 }
 
 export function listarEmOrdemAlfabeticaPet(array) {
 
   const lista = array.sort((a, b) => {
-    // Converte os nomes para maiúsculas para garantir a ordem correta
     const nomeA = a.nome.toUpperCase();
     const nomeB = b.nome.toUpperCase();
 
@@ -61,7 +59,7 @@ export function listarEmOrdemAlfabeticaPet(array) {
   });
 
   lista.forEach((objeto) => {
-    console.log(`Nome: ${objeto.nome} | ID: ${objeto.id} | Nome do Dono: ${objeto.nomeDono}`);
+    console.log(objeto)
   });
 }
 
@@ -81,6 +79,17 @@ export function listarEmOrdemCronologica(array) {
   });
 
   lista.forEach((objeto) => {
-    console.log(objeto.data);
+    console.log(objeto);
   });
+}
+
+
+export function encontrarObjetoPorId(id, array) {
+  const objetoEncontrado = array.find((objeto) => objeto.id === id);
+  if (objetoEncontrado) {
+    return objetoEncontrado;
+  } else {
+    console.log("Objeto não encontrado");
+    return null;
+  }
 }

@@ -1,7 +1,4 @@
-import { Cliente } from "./Cliente.js";
 import { Funcionario } from "./Funcionario.js";
-import { Animal } from "./Animal.js";
-import { Consulta } from "./Consulta.js";
 import { sistema } from "../index.js";
 import { sistemaNaoLogado } from "../index.js";
 
@@ -24,8 +21,7 @@ export class SistemaNaoLogado {
     const senha = prompt("Escolha a senha que deseja cadastrar: ");
     const funcionario = new Funcionario(nome, usuario, senha);
     sistemaNaoLogado.adicionarFuncionario(funcionario);
-    //console.log(funcionario);
-    //console.log(this.funcionarios);
+    console.log(`Seu ID é: ${funcionario.id}`)
   }
 
   adicionarFuncionario(funcionario) {

@@ -1,13 +1,13 @@
 import { Cliente } from "./Cliente.js";
-import { Funcionario } from "./Funcionario.js";
 import { Animal } from "./Animal.js";
 import { Consulta } from "./Consulta.js";
-import { SistemaNaoLogado } from "./SistemaNaoLogado.js";
 import { sistema } from "../index.js";
 import { sistemaNaoLogado } from "../index.js";
+import { encontrarObjetoPorId } from "../utils.js";
 
-import {listarEmOrdemAlfabetica} from '../utils.js';
-import {listarEmOrdemAlfabeticaPet} from '../utils.js';
+import { listarEmOrdemAlfabetica } from "../utils.js";
+import { listarEmOrdemAlfabeticaPet } from "../utils.js";
+import { listarEmOrdemCronologica } from "../utils.js";
 
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
@@ -34,7 +34,24 @@ export class Sistema {
   }
 
   verMeusDados() {
-    // Implementar lógica para exibir os dados do funcionário logado
+    const id = prompt("digite seu ID: ");
+    const funcionario = encontrarObjetoPorId(id, this.funcionarios);
+    console.log("1 - Ver usuario.");
+    console.log("1 - Ver senha.");
+    opcao = prompt(`Escolha uma opcao ${funcionario.nome}: `);
+    switch (opcao) {
+      case "1":
+        console.log(funcionario.usuario());
+        break;
+
+      case "2":
+        console.log(funcionario.senha());
+        break;
+
+      default:
+        console.log("Opção inválida. Por favor, escolha uma opção válida.");
+        break;
+    }
     console.log("Visualizando meus dados...");
   }
 
@@ -47,48 +64,64 @@ export class Sistema {
     if (this.clientes.length === 0) {
       console.log("Nenhum cliente encontrado.");
     }
-    listarEmOrdemAlfabetica(this.clientes)
+    listarEmOrdemAlfabetica(this.clientes);
   }
 
   verListaPets() {
     if (this.pets.length === 0) {
       console.log("Nenhum pet encontrado.");
     }
-    listarEmOrdemAlfabeticaPet(this.pets)
+    listarEmOrdemAlfabeticaPet(this.pets);
   }
 
   verListaConsultas() {
-    // Implementar lógica para exibir a lista de consultas
-    console.log("Visualizando lista de consultas...");
+    if (this.consultas.length === 0) {
+      console.log("Nenhuma consulta encontrada.");
+    }
+    listarEmOrdemCronologica(this.consultas);
   }
 
   verListaFuncionarios() {
-    // Implementar lógica para exibir a lista de funcionários
-    console.log("Visualizando lista de funcionários...");
+    if (sistemaNaoLogado.funcionarios.length === 0) {
+      console.log("Nenhum funcionario encontrado.");
+    }
+    listarEmOrdemAlfabetica(sistemaNaoLogado.funcionarios);
   }
 
   cadastrarCliente() {
     const nome = prompt("Escolha o nome que deseja cadastrar: ");
     const cliente = new Cliente(nome);
     sistema.adicionarCliente(cliente);
-    console.log(`Cliente ${cliente.nome} cadastrado com sucesso!`)
-    console.log(`o ID do cliente é : ${cliente.id}`)
+    console.log(`Cliente ${cliente.nome} cadastrado com sucesso!`);
+    console.log(`o ID do cliente é : ${cliente.id}`);
   }
 
   cadastrarPet() {
     const nome = prompt("Escolha o nome do Pet que deseja cadastrar: ");
     const nomeDono = prompt("Escolha o nome do Dono que deseja cadastrar: ");
-    const pet = new Animal(nome,nomeDono);
+    const pet = new Animal(nome, nomeDono);
     sistema.adicionarPet(pet);
-    console.log(`Pet  cadastrado com sucesso!`)
-    console.log(`o nome do Pet é : ${pet.nome}`)
-    console.log(`o ID do Pet é : ${pet.id}`)
-    console.log(`o nome do dono do Pet é : ${pet.nomeDono}`)
+    console.log(`Pet  cadastrado com sucesso!`);
+    console.log(`o nome do Pet é : ${pet.nome}`);
+    console.log(`o ID do Pet é : ${pet.id}`);
+    console.log(`o nome do dono do Pet é : ${pet.nomeDono}`);
   }
 
   marcarConsulta() {
-    // Implementar lógica para marcar uma consulta
-    console.log("Marcando consulta...");
+    //nomeCliente, nomePet, funcionarioAgendou, data
+    const nomeCliente = prompt("Digite o nome do dono do pet: ");
+    const nomePet = prompt("Digite o nome do Pet: ");
+    const funcionarioAgendou = prompt("Digite o nome do funcionario: ");
+    const data = prompt("Digite a data da consulta no formato AAAA-MM-DD: ");
+    const consulta = new Consulta(
+      nomeCliente,
+      nomePet,
+      funcionarioAgendou,
+      data
+    );
+    sistema.agendarConsulta(consulta);
+    console.log(`Consulta ${consulta.id} cadastrada com sucesso!`);
+    console.log(`a data da consulta é: ${consulta.data}`);
   }
 
   mudarStatusConsulta() {
@@ -126,7 +159,7 @@ export class Sistema {
     console.log("----------- Opcoes -----------");
     console.log("1. Ver meus dados");
     console.log("2. Modificar meus dados");
-    console.log("3. Lista de Clientes");
+    console.log("3. ver lista de Clientes");
     console.log("4. Ver lista de Pets");
     console.log("5. Ver lista de Consultas");
     console.log("6. Ver lista de Funcionários");
