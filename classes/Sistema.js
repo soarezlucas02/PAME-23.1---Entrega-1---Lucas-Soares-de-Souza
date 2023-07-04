@@ -35,17 +35,17 @@ export class Sistema {
 
   verMeusDados() {
     const id = prompt("digite seu ID: ");
-    const funcionario = encontrarObjetoPorId(id, this.funcionarios);
-    console.log("1 - Ver usuario.");
-    console.log("1 - Ver senha.");
-    opcao = prompt(`Escolha uma opcao ${funcionario.nome}: `);
+    const funcionario = encontrarObjetoPorId(id, sistemaNaoLogado.funcionarios);
+    console.log("1- Ver usuario.");
+    console.log("1- Ver senha.");
+    let opcao = prompt(`Escolha uma opcao ${funcionario.nome}: `);
     switch (opcao) {
       case "1":
-        console.log(funcionario.usuario());
+        console.log(funcionario.usuario);
         break;
 
       case "2":
-        console.log(funcionario.senha());
+        console.log(funcionario.senha);
         break;
 
       default:
@@ -56,7 +56,7 @@ export class Sistema {
   }
 
   modificarMeusDados() {
-    // Implementar lógica para modificar os dados do funcionário logado
+    //modificar os dados do funcionário logado
     console.log("Modificando meus dados...");
   }
 
@@ -108,7 +108,6 @@ export class Sistema {
   }
 
   marcarConsulta() {
-    //nomeCliente, nomePet, funcionarioAgendou, data
     const nomeCliente = prompt("Digite o nome do dono do pet: ");
     const nomePet = prompt("Digite o nome do Pet: ");
     const funcionarioAgendou = prompt("Digite o nome do funcionario: ");
@@ -125,32 +124,32 @@ export class Sistema {
   }
 
   mudarStatusConsulta() {
-    // Implementar lógica para mudar o status de uma consulta
+    //mudar o status de uma consulta
     console.log("Mudando status de consulta...");
   }
 
   removerCliente() {
-    // Implementar lógica para remover um cliente
+    //remover um cliente
     console.log("Removendo cliente...");
   }
 
   removerPet() {
-    // Implementar lógica para remover um pet
+    //remover um pet
     console.log("Removendo pet...");
   }
 
   cancelarConsulta() {
-    // Implementar lógica para cancelar uma consulta
+    //cancelar uma consulta
     console.log("Cancelando consulta...");
   }
 
   removerFuncionario() {
-    // Implementar lógica para remover um funcionário
+    //remover um funcionário
     console.log("Removendo funcionário...");
   }
 
   fazerLogout() {
-    // Implementar lógica para fazer logout
+    //fazer logout
     this.funcionarioLogado = false;
     console.log("Fazendo logout...");
   }
